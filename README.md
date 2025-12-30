@@ -4,8 +4,11 @@ AI / Backend Developer
 Focused on LLM applications, backend systems, and intelligent platforms.
 
 📍 China  
+📱 Phone: +86 177 8342 5601
 📫 Email: 1939709345@qq.com  
 🔗 GitHub: https://github.com/ycdev-liu
+
+
 
 ---
 
