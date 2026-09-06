@@ -1,117 +1,184 @@
 # 👋 Hi, I'm Yanchao Liu
 
-AI / Backend Developer  
-Focused on LLM applications, backend systems, and intelligent platforms.
+Computer Vision / 3D Perception / Robotics Developer  
+Focused on visual perception, 6D pose estimation, model fine-tuning, and robotic vision systems.
 
-📍 China  
-📱 Phone: +86 177 8342 5601
+📍 Chongqing, China  
 📫 Email: 1939709345@qq.com  
 🔗 GitHub: https://github.com/ycdev-liu
+
 ---
 
 ## 🚀 About Me
-- 🎓 M.S. candidate in Computer Technology (Research: Power Load Forecasting)
-- 💻 AI & Backend Developer with strong Python background
-- 🤖 Focused on Large Language Model (LLM) applications and multi-agent systems
-- 🌱 Interested in AI engineering, backend services, and intelligent platforms
+
+- 🎓 M.S. candidate in Computer Technology at Chongqing Normal University
+- 👁️ Focused on computer vision, RGB-D perception, point cloud processing, and 6D pose estimation
+- 🤖 Experience with robotic perception systems based on ROS2, RealSense, and vision-guided manipulation
+- 🧠 Experience with SAM3 fine-tuning, YOLO, FoundationPose, and vision model deployment
+- ⚙️ Interested in model compression, ONNX/TensorRT deployment, and edge AI
+- 💻 Strong Python / PyTorch background with C++ engineering experience
 
 ---
 
 ## 🛠 Technical Skills
 
-### Programming Languages
-- **Python** (Advanced)
-- C++ (Familiar)
-
-
-
-
-### AI & LLM
-- PyTorch
+### Programming & Deep Learning
+- **Python** / PyTorch
+- C++  
+- CNN / Transformer / Diffusion Models
 - NumPy / Pandas
-- LangChain, LangGraph, CAMEL
-- Experience with mainstream LLM APIs (ChatGPT, Qwen, Bailian)
-- Understanding of Transformer architecture and LLM fundamentals
 
-### Backend & Data
+### Computer Vision & 3D Perception
+- YOLO / SAM2 / SAM3
+- OpenCV / Open3D / PCL
+- RGB-D perception
+- Point cloud processing
+- PCA / RANSAC / ICP
+- 6D Pose Estimation
+- FoundationPose
+
+### Robotics
+- ROS2 / TF
+- Camera Calibration / Hand-Eye Calibration
+- Robot Kinematics
+- RealSense
+- LeRobot
+- MuJoCo / NVIDIA Isaac Sim
+
+### Model Optimization & Deployment
+- LoRA Fine-tuning
+- INT8 Quantization
+- ONNX / TensorRT
+- Linux / Docker / Conda / CMake
+
+### LLM & Backend
+- LangGraph / RAG
 - FastAPI
-- SQLModel
-- MySQL
+- MySQL / PostgreSQL
+- Qdrant / ChromaDB
 - Redis
-- Vector Databases: ChromaDB, Qdrant
-
-### DevOps & Environment
-- Linux
-- Docker
-- Model serving with vLLM
-- Git-based collaboration
-- Conda / uv environment management
-
-### Tools
-- PyCharm
-- Cursor
 
 ---
 
-## 📌 Projects
+## 📌 Featured Projects
 
-### 🔹 Intelligent Academic Research Platform  
-*(Oct 2025 – Dec 2025)*  
-🔗 GitHub: https://github.com/sadf5451321/scholarly-ai
+### 🔹 General-Purpose Dual-Arm Grasping Robot
+**Jun 2026 – Sep 2026**
 
-**Description:**  
-An intelligent academic research platform designed for research scenarios.  
-The system adopts a **multi-agent architecture** to automate paper search, download, vector database construction, and RAG-based question answering, significantly improving research efficiency.
+A general-purpose robotic grasping system for warehouse and retail object sorting, integrating vision-language segmentation with grasp pose generation.
 
-**Key Contributions:**
-- Designed the backend architecture using **FastAPI**, optimizing API concurrency performance
-- Built a **multi-agent workflow** with LangGraph, including:
-  - Paper Search Agent  
-  - Download Agent  
-  - RAG QA Agent  
-  - Supervisor for task scheduling
-- Designed a paper data storage system:
-  - PDF persistence
-  - Vector database construction and management
-  - Multi-database switching and auto-loading mechanism
+**Key Contributions**
+- Built the perception pipeline connecting **SAM3 and GraspGenX** through ZMQ and ROS2
+- Implemented the workflow from **text prompt → instance segmentation → grasp pose generation → robot execution**
+- Designed a human-in-the-loop SAM3 data engine:
+  - model pre-annotation
+  - manual correction
+  - dataset conversion
+  - fine-tuning dataset generation
+- Fine-tuned SAM3 with **LoRA** for 3 warehouse object categories covering around 60 object appearances
+- Improved real-world recognition success rate from **82.6% to 98.2%**
+- Achieved **Mask mAP@50 of 44.5%**
 
-**Tech Stack:**  
-LangGraph · FastAPI · Streamlit · Qdrant / ChromaDB · Pydantic · Uvicorn
+**Tech Stack**  
+SAM3 · GraspGenX · PyTorch · LoRA · ROS2 · ZMQ · RealSense
 
 ---
 
-### 🔹 VoltRide Nexus – Smart E-Vehicle Management Platform  
-*(May 2025 – Jun 2025)*
+### 🔹 Industrial Motor 6D Pose Estimation System
+**Apr 2026 – Jun 2026**
 
-**Description:**  
-A high-performance backend platform for urban electric vehicle management, supporting user systems, vehicle scheduling, ride data recording, and system monitoring.
+An RGB-D vision system for industrial motor pick-and-place tasks, supporting multi-object 6D pose estimation and empty-slot localization.
 
-**Key Contributions:**
-- Designed the overall backend architecture using **FastAPI**
-- Implemented core data models for users, vehicles, regions, and ride records
-- Integrated **MySQL (SQLModel)** and **Redis** for efficient storage and caching
-- Built foundational backend capabilities such as API standards, exception handling, and permission validation
+**Key Contributions**
+- Designed two 6D pose estimation pipelines for different tray constraints
+- Built a classical 3D perception pipeline using:
+  - YOLO
+  - depth back-projection
+  - RANSAC
+  - PCA
+  - ICP
+- Combined a 4×10 tray prior with point cloud processing for motor localization and pose estimation
+- Developed a deep perception pipeline based on **LocateAnything + SAM2 + FoundationPose**
+- Integrated CAD models for instance segmentation and 6D pose estimation
+- Developed empty-slot detection using:
+  - Z-axis layering
+  - DBSCAN
+  - geometric filtering
+  - PCA-based orientation estimation
+- Integrated the full perception pipeline into ROS2 for robot pick-and-place execution
 
-**Tech Stack:**  
-FastAPI · MySQL · Redis · SQLModel · Pydantic · Uvicorn
+**Performance**
+- Classical 6D Pose Success Rate: **~95%**
+- FoundationPose single-object Pose Success Rate: **~98.4%**
+- Empty-slot recognition success rate: **~95%**
+- Position error: **Z ±1 mm / XY ±2 mm**
+- Orientation error: **roll/pitch ±2° / yaw ±3°**
+- Stage-wise end-to-end pick-and-place success rate: **~99%**
+
+**Tech Stack**  
+Python · C++ · ROS2 · YOLO · OpenCV · Open3D · SAM2 · FoundationPose · TensorRT
 
 ---
 
-### 🔹 Fund Data Crawling & Visualization System  
-*(Jan 2023 – May 2023)*
+### 🔹 VLA-based Robotic Manipulation Research
+**Mar 2026 – May 2026**
 
-**Description:**  
-A financial data system based on AkShare APIs. Users input fund codes via a Tkinter UI to automatically fetch historical data, perform data cleaning, analysis, and visualize trends.
+Exploration of Vision-Language-Action models for desktop tool recognition, grasping, and classification tasks.
 
-**Tech Stack:**  
-AkShare · NumPy · Pandas · Matplotlib · Tkinter
+**Key Contributions**
+- Studied **ACT, SmolVLA, GR00T N1, and π-series models**
+- Analyzed imitation learning, vision-language fusion, action representation, and end-to-end robot control
+- Built training and inference workflows using **LeRobot**
+- Participated in robot demonstration data collection, model deployment, parameter tuning, and experiment analysis
+- Evaluated VLA models on screwdriver, socket, and plier manipulation tasks
+
+**Tech Stack**  
+LeRobot · SmolVLA · PyTorch · RealSense · Robot Teleoperation
+
+---
+
+### 🔹 Intelligent Academic Research Platform
+**Nov 2025 – Jan 2026**
+
+A multi-agent academic research platform supporting paper retrieval, automatic downloading, vector database construction, and RAG-based question answering.
+
+**Key Contributions**
+- Designed a multi-agent workflow using **LangGraph**
+- Implemented Search Agent, Download Agent, RAG Agent, and Supervisor
+- Built backend APIs using **FastAPI**
+- Designed vector knowledge bases with **Qdrant / ChromaDB**
+- Integrated PostgreSQL and MongoDB for structured and unstructured data management
+
+**Tech Stack**  
+LangGraph · FastAPI · Qdrant · ChromaDB · PostgreSQL · MongoDB
+
+---
+
+## 🔬 Current Interests
+
+- Computer Vision
+- RGB-D / 3D Perception
+- 6D Pose Estimation
+- Vision Model Fine-tuning
+- Model Quantization & Pruning
+- ONNX / TensorRT Deployment
+- Edge AI
+- Robotic Vision Systems
 
 ---
 
 ## 🏆 Honors & Certifications
-- 🥇 Huawei ICT Competition – Provincial First Prize, National Third Prize
-- 📜 Software Designer (Intermediate Certification)
+
+- 🥇 Huawei ICT Competition – Provincial First Prize
+- 📜 Software Designer – Intermediate Certification
 - 🎓 Graduate First-Class Scholarship
 - 🏅 Provincial Inspirational Scholarship
-- 🏆 Outstanding Student (1 time), Outstanding Student Leader (2 times)
-- 🌍 CET-4 (College English Test Band 4)
+- 🏆 Outstanding Student / Outstanding Student Leader
+- 🌍 CET-4
+
+---
+
+## 📫 Contact
+
+- Email: **1939709345@qq.com**
+- GitHub: **ycdev-liu**
